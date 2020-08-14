@@ -1,4 +1,5 @@
 package com.thread.Thread.controllers;
+
 import com.thread.Thread.models.FaceBookModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,20 +33,20 @@ public class FacebookController extends Controller {
         OAuth2Operations operations = connectionFactory.getOAuthOperations();
         OAuth2Parameters params = new OAuth2Parameters();
 
-        params.setRedirectUri("http://localhost:8080/Facebook/login/auth");
+        params.setRedirectUri("http://localhost:8080/Facebook/login/callback");
         params.setScope("email,public_profile");
 
         String url = operations.buildAuthenticateUrl(params);
-        System.out.println("The URL is" + url);
-        return "redirect:" + url;
+        System.out.println("The URL is " + url);
+        return "redirect: " + url;
     }
 
-    @RequestMapping("/login/auth")
+    @RequestMapping("/login/callback")
     public ModelAndView loginAuthenticate(@RequestParam("code") String authorizationCode) {
         OAuth2Operations operations = connectionFactory.getOAuthOperations();
         accessToken = operations.exchangeForAccess(
                 authorizationCode,
-                "http://localhost:8080/Facebook/login/auth",
+                "http://localhost:8080/Facebook/login/callback",
                 null);
 
         Connection<Facebook> connection = connectionFactory.createConnection(accessToken);

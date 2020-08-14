@@ -41,6 +41,13 @@
 			</exclusions>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure -->
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+			<version>2.3.0.RELEASE</version>
+		</dependency>
+
 		<!-- Dependency for Twitter scraping -->
 		<dependency>
 			<groupId>org.twitter4j</groupId>
